@@ -1,0 +1,91 @@
+# =========================
+# Python cache & bytecode
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# Virtual environments
+# =========================
+venv/
+env/
+ENV/
+.venv/
+
+# =========================
+# Django stuff
+# =========================
+*.log
+db.sqlite3
+db.sqlite3-journal
+
+# Media & static (production generated)
+media/
+staticfiles/
+static_collected/
+
+# =========================
+# Django migrations
+# (ignore all except __init__.py)
+# =========================
+**/migrations/*
+!**/migrations/__init__.py
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDE / editor files
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# =========================
+# Testing / coverage
+# =========================
+htmlcov/
+.tox/
+.coverage
+.pytest_cache/
+nosetests.xml
+coverage.xml
+
+# =========================
+# Django secret / production files
+# =========================
+*.pem
+*.key
+
+# =========================
+# Celery / Redis / system files
+# =========================
+celerybeat-schedule
+celerybeat.pid
+
+# =========================
+# Docker (optional)
+# =========================
+docker-compose.override.yml
+
+# =========================
+# Node (if frontend exists)
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Mypy / type checking
+# =========================
+.mypy_cache/
+.dmypy.json
+dmypy.json

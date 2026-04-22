@@ -1,0 +1,4 @@
+django
+djangrestframework
+django-cors-headers
+djangrestframework-simplejwt

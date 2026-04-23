@@ -1,6 +1,6 @@
 django
-djangrestframework
+djangorestframework
 django-cors-headers
-djangrestframework-simplejwt
+djangorestframework-simplejwt
 openpyxl
 python-dotenv

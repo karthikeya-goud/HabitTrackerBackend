@@ -15,7 +15,9 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes, force_str
 from habits.models import Logs
+from dotenv import load_dotenv
 
+load_dotenv()
 User = get_user_model()
 
 

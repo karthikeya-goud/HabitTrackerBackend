@@ -38,7 +38,7 @@ SECRET_KEY = "django-insecure-^3&)w45nyhb2i(s_n&p6-kz19f@demzbz9yxs86m10%@ivv_-*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = get_bool("DEBUG")
 
-ALLOWED_HOSTS = get_list("ALLOWED_HOSTS")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
 
 
 # Application definition
@@ -163,7 +163,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = get_bool("CORS_ALL", False)
-CORS_ALLOWED_ORIGINS = get_list("CORS_ALLOWED")
+CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED").split(",")
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"

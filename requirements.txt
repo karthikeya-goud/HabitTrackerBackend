@@ -2,3 +2,5 @@ django
 djangrestframework
 django-cors-headers
 djangrestframework-simplejwt
+openpyxl
+python-dotenv

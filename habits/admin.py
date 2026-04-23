@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Task, TaskLog
+from .models import Task, TaskLog, Logs
 
 
 class TaskAdmin(admin.ModelAdmin):
@@ -68,3 +68,4 @@ class TaskLogAdmin(admin.ModelAdmin):
 
 admin.site.register(Task, TaskAdmin)
 admin.site.register(TaskLog, TaskLogAdmin)
+admin.site.register(Logs)

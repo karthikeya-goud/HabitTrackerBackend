@@ -73,3 +73,12 @@ class TaskLog(models.Model):
 
     def __str__(self):
         return f"{self.task.title}"
+
+
+class Logs(models.Model):
+    log = models.CharField(max_length=255)
+    type = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.log}"

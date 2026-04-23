@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,13 +22,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
+
+def get_list(env_var):
+    value = os.getenv(env_var, "")
+    return [item.strip() for item in value.split(",") if item.strip()]
+
+
+def get_bool(env_var, default=False):
+    return os.getenv(env_var, str(default)).lower() in ("true", "1", "yes")
+
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-^3&)w45nyhb2i(s_n&p6-kz19f@demzbz9yxs86m10%@ivv_-*"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = get_bool("DEBUG")
 
-ALLOWED_HOSTS = ["192.168.1.34", "localhost"]
+ALLOWED_HOSTS = get_list("ALLOWED_HOSTS")
 
 
 # Application definition
@@ -124,7 +137,6 @@ STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 
-CORS_ALLOW_ALL_ORIGINS = True
 AUTH_USER_MODEL = "accounts.User"
 
 TIME_ZONE = "Asia/Kolkata"
@@ -144,3 +156,20 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
+
+AUTHENTICATION_BACKENDS = [
+    "accounts.backends.UsernameOrEmailBackend",
+    "django.contrib.auth.backends.ModelBackend",  # keep default as fallback
+]
+
+CORS_ALLOW_ALL_ORIGINS = get_bool("CORS_ALL", False)
+CORS_ALLOWED_ORIGINS = get_list("CORS_ALLOWED")
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = os.getenv("GOOGLE_EMAIL")
+EMAIL_HOST_PASSWORD = os.getenv("GOOGLE_APP_PASSWORD")

@@ -72,7 +72,7 @@ class RequestPasswordReset(APIView):
         uid = urlsafe_base64_encode(force_bytes(user.id))
         token = PasswordResetTokenGenerator().make_token(user)
 
-        reset_link = f"{os.getenv("FRONTEND_URL")}/reset-password/{uid}/{token}/"
+        reset_link = f"{os.getenv('FRONTEND_URL')}/reset-password/{uid}/{token}/"
 
         send_mail(
             subject="Password Reset",

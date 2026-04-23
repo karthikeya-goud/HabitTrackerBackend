@@ -33,7 +33,7 @@ def get_bool(env_var, default=False):
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = "django-insecure-^3&)w45nyhb2i(s_n&p6-kz19f@demzbz9yxs86m10%@ivv_-*"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = get_bool("DEBUG")
